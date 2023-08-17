@@ -177,12 +177,12 @@ class Evaluator:
                                 if config['OUTPUT_DETAILED']:
                                     details.append(metric.detailed_results(table_res))
                                 if config['PLOT_CURVES']:
-                                    metric.plot_single_tracker_results(table_res, tracker_display_name, c_cls,
+                                    metric.plot_single_tracker_results(table_res, tracker_display_name, '',
                                                                        output_fol)
                             if config['OUTPUT_SUMMARY']:
-                                utils.write_summary_results(summaries, c_cls, output_fol)
+                                utils.write_summary_results(summaries, '', output_fol)
                             if config['OUTPUT_DETAILED']:
-                                utils.write_detailed_results(details, c_cls, output_fol)
+                                utils.write_detailed_results(details, '', output_fol)
 
                     # Output for returning from function
                     output_res[dataset_name][tracker] = res

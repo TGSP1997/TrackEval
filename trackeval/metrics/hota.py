@@ -191,12 +191,16 @@ class HOTA(_BaseMetric):
         plt.xlabel('alpha')
         plt.ylabel('score')
         plt.title(tracker + ' - ' + cls)
+        if cls == '':
+            plt.title(tracker)
         plt.axis([0, 1, 0, 1])
         legend = []
         for name in self.float_array_fields:
             legend += [name + ' (' + str(np.round(np.mean(res[name]), 2)) + ')']
         plt.legend(legend, loc='lower left')
         out_file = os.path.join(output_folder, cls + '_plot.pdf')
+        if cls == '':
+            out_file = os.path.join(output_folder + '_plot.pdf')
         os.makedirs(os.path.dirname(out_file), exist_ok=True)
         plt.savefig(out_file)
         plt.savefig(out_file.replace('.pdf', '.png'))

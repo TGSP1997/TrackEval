@@ -271,7 +271,6 @@ class MotChallenge2DBox(_BaseDataset):
                     raw_data['tracker_confidences'][t] = np.empty(0)
             if is_gt:
                 raw_data['gt_crowd_ignore_regions'][t] = np.empty((0, 4))
-
         if is_gt:
             key_map = {'ids': 'gt_ids',
                        'classes': 'gt_classes',
@@ -402,7 +401,6 @@ class MotChallenge2DBox(_BaseDataset):
             unique_tracker_ids += list(np.unique(data['tracker_ids'][t]))
             num_tracker_dets += len(data['tracker_ids'][t])
             num_gt_dets += len(data['gt_ids'][t])
-
         # Re-label IDs such that there are no empty IDs
         if len(unique_gt_ids) > 0:
             unique_gt_ids = np.unique(unique_gt_ids)
@@ -418,7 +416,6 @@ class MotChallenge2DBox(_BaseDataset):
             for t in range(raw_data['num_timesteps']):
                 if len(data['tracker_ids'][t]) > 0:
                     data['tracker_ids'][t] = tracker_id_map[data['tracker_ids'][t]].astype(np.int)
-
         # Record overview statistics.
         data['num_tracker_dets'] = num_tracker_dets
         data['num_gt_dets'] = num_gt_dets

@@ -67,7 +67,7 @@ class _BaseMetric(ABC):
         """Prints table of results for all sequences"""
         print('')
         metric_name = self.get_name()
-        self._row_print([metric_name + ': ' + tracker + '-' + cls] + self.summary_fields)
+        self._row_print([metric_name + '-'+tracker] + self.summary_fields)
         for seq, results in sorted(table_res.items()):
             if seq == 'COMBINED_SEQ':
                 continue
